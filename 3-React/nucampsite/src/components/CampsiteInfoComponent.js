@@ -11,15 +11,15 @@ function RenderComments({comments}) {
                     {comments.map(
                         comments => {
                             return(
-                                <div key={comments.id}>
-                                    <Card>
-                                        <CardTitle>
+                                <div key={comments.id} className="col-md m-3">
+                                    
+                                        <div>
                                             {comments.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}
-                                        </CardTitle>
-                                        <CardBody>
+                                        </div>
+                                        <strong>
                                             {comments.text}
-                                        </CardBody>
-                                    </Card>
+                                        </strong>
+                                    
                                 </div>
                             );
                         }
@@ -53,7 +53,7 @@ function CampsiteInfo(props) {
                         <div className="row">
                             <RenderCampsite campsite={props.campsite}/>
 
-                            <RenderComments comments={props.comment}/>
+                            <RenderComments comments={props.comments}/>
                         </div>
                     </div>
                 </div>
