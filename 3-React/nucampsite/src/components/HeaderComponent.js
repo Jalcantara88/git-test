@@ -43,7 +43,7 @@ class Header extends Component {
         return(
             //REACT FRAGMENT IS A WRAPPER PARENT DIV FOR OUTPUTTING MULTIPLE THINGS INSIDE OF
             <React.Fragment>
-{/LOGO HEADER/}
+{/*LOGO HEADER*/}
                 <Jumbotron fluid>
                     <div className="row">
                         <div className="col">
@@ -52,22 +52,22 @@ class Header extends Component {
                         </div>
                     </div>
                 </Jumbotron>
-{/NAVBAR/}
+{/*NAVBAR*/}
                 <Navbar dark sticky="top" expand='md'>
                 <div className="container">
-{/BRAND IN NAVBAR/}
+{/*BRAND IN NAVBAR*/}
                     <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" hight="30" width="30" alt="NuCamp Logo" /></NavbarBrand>
-{/TOGGLER ICON AND WHAT IT TRIGGERS ONCLICK/}
+{/*TOGGLER ICON AND WHAT IT TRIGGERS ONCLICK*/}
                     <NavbarToggler onClick={this.toggleNav} />
-{/EVERYTHING IN THIS COMPONENT WILL COLLAPSE AT SET MEDIA QUERRY/}
+{/*EVERYTHING IN THIS COMPONENT WILL COLLAPSE AT SET MEDIA QUERRY*/}
                     <Collapse isOpen={this.state.isNavOpen} navbar>
-{/NAVLINKS GROUP WRAPPER/}
+{/*NAVLINKS GROUP WRAPPER*/}
                         <Nav navbar>
-{/NAVLINK HOLDER/}
+{/*NAVLINK HOLDER*/}
                             <NavItem>
-{/NAVLINK/}
+{/*NAVLINK*/}
                                 <NavLink className="nav-link" to="/home">
-{/NAVLINK ICON/}
+{/*NAVLINK ICON*/}
                                     <i className="fa fa-home fa-lg" />Home
                                 </NavLink>
                             </NavItem>
@@ -87,7 +87,7 @@ class Header extends Component {
                                 </NavLink>
                             </NavItem>
                         </Nav>
-{/LOGIN BUTTON OUTSIDE OF NAVLINK GROUP BUT STILL IN COLLAPSE/}
+{/* BUTTON OUTSIDE OF NAVLINK GROUP BUT STILL IN COLLAPSE*/}
                         <span className="navbar-text ml-auto">
                             <Button outline onClick={this.toggleModal}>
                                 <i className="fa fa-sign-in fa-lg" /> Login
@@ -97,15 +97,15 @@ class Header extends Component {
                     </Collapse>
                 </div>
                 </Navbar>
-{/MODAL/}
+{/*MODAL*/}
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
-{/CONTACT FORM/}
+{/*CONTACT FORM*/}
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
-{/INNERREF HOLDS THE INPUT VALUE FOR YOU SO YOU CAN ACCESS THEM LATER WITH THE LOGIN HANDLER/}
+{/*INNERREF HOLDS THE INPUT VALUE FOR YOU SO YOU CAN ACCESS THEM LATER WITH THE LOGIN HANDLER*/}
                                 <Input type="text" id="username" name="username" innerRef={input => this.username = input}/>
                             </FormGroup>
 
@@ -120,7 +120,7 @@ class Header extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-{/SUBMIT BUTTON/}
+{/*SUBMIT BUTTON*/}
                             <Button type="submit" value="submit" color="primary">Login</Button>
                         </Form>
                     </ModalBody>

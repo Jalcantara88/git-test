@@ -9,24 +9,23 @@ import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-//console.log(CAMPSITES[0].comments[0].text);
-
 const mapStateToProps = state => {
   return {
     campsites: state.campsites,
     comments: state.comments,
-    partnters: state.partners,
+    partners: state.partners,
     promotions: state.promotions
-  }
-}
+  };
+};
 
 class Main extends Component {
+
   
 
 
 
   render() {
-
+      console.log(this.props);
       const HomePage = () => {
         return (
           <Home 
@@ -34,8 +33,8 @@ class Main extends Component {
             promotion={this.props.promotions.filter(promotion => promotion.featured)[0]}
             partner={this.props.partners.filter(partner => partner.featured)[0]}
           />
-        )
-      }
+        );
+      };
 
       const CampsiteWithId = ({match}) => {
         return(
@@ -43,7 +42,7 @@ class Main extends Component {
           comments={this.props.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)} 
           />
         );
-      }
+      };
 
       return (
           <div>
@@ -54,8 +53,9 @@ class Main extends Component {
                 <Directory campsites={this.props.campsites} /> 
                 } />
                 <Route path='/directory/:campsiteId' component={CampsiteWithId} />
-                <Route exact path='/aboutus' render={() => <About partners={this.props.partners} />} />
                 <Route exact path='/contactus' component={Contact} />
+                <Route exact path='/aboutus' render={() => <About partners={this.props.partners} />} />
+                
                 <Redirect to='/home' />
               </Switch>
               <Footer />
