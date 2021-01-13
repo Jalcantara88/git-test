@@ -44,3 +44,12 @@ html,body
     padding: 0px;
     overflow-x: hidden; 
 }
+
+.socialLink {
+  height: 30px;
+}
+
+.skillBadge {
+  height: 50px;
+  width: 50px;
+}

@@ -1,23 +1,42 @@
 import React, { Component } from 'react';
 import { Jumbotron } from 'reactstrap';
 
-class SocialBar extends Component {
-    constructor(props) {
-        super(props);
+function RenderSocialLinks({socialLink}) {
+    return(
+        <React.Fragment>
+            <div className="col">
+                <a href={socialLink.url}>
+                    <img className="img-fluid" src={socialLink.image}/>
+                </a>
+            </div>         
+        </React.Fragment>
+    );
+};
 
-    }
+function SocialBar(props) {
 
-    render() {
-        return(
-            <Jumbotron className="bg-primary my-0" fluid>
-                <div className="row">
-                    <div className="col text-white">
-                        socialBar holder
+    const socialbar = props.socialLinks.map(socialLink => {
+        return (
+                <RenderSocialLinks socialLink={socialLink}/>
+        );
+    });
+
+    
+    return(
+        <Jumbotron className="bg-primary my-0 py-2" fluid>
+            <div className="row">
+                <div className="col-11 col-lg-8 mx-auto">
+                    <div className="row">
+                        {socialbar}
                     </div>
                 </div>
-            </Jumbotron>
-        )
-    }
-}
+                        
+                
+                
+            </div>
+        </Jumbotron>
+    );
+    
+};
 
 export default SocialBar;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-
+import { Link, animateScroll as scroll } from "react-scroll";
 import { Nav, NavbarToggler, Collapse, NavItem, Navbar, NavbarBrand } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+
 
 
 class Menu extends Component {
@@ -25,32 +26,36 @@ class Menu extends Component {
             <React.Fragment>
                 <Navbar dark className="bg-dark" sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/home">
+                        <NavbarBrand className="" href="#pageStart">
                             <img src="" alt="" />
                         </NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="mx-auto">
+                                
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/about">
+                                    <Link className="nav-link" to="about">
                                         About
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/skills">
+                                    <Link className="nav-link" to="skills">
                                         Skills
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/folio">
+                                    <img src="" />
+                                </NavItem>
+                                <NavItem>
+                                    <Link className="nav-link" to="folio">
                                         Folio
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/contact">
+                                
+                                    <Link className="nav-link" to="contact">
                                         Contact
-                                    </NavLink>
-                                </NavItem>
+                                    </Link>
+                                
                             </Nav>
 
                         </Collapse>
@@ -62,6 +67,6 @@ class Menu extends Component {
         )
     }
 
-}
+};
 
 export default Menu;

@@ -32,19 +32,19 @@ class Contact extends Component {
     
     render() {
         return (
-            <div className="container-fluid bg-primary py-5">
+            <div className="container-fluid bg-primary py-5" id="contact">
                 <div className="row row-content">
                     <div className="col-10 mx-auto bg-white rounded">
-                        <div class="row">
+                        <div class="row mt-3">
                             <div className="col-12">
-                                <h2>Ask Me A Question</h2>
+                                <h2 className="text-primary">Message Me</h2>
                                 <hr />
                             </div>
 
                             <div className="col-10 mx-auto">
                                 <LocalForm onSubmit={values => this.handleSubmit(values)}>
                                     <Row className="form-group">
-                                        <Label htmlFor="name" md={2}>Name</Label>
+                                        <Label htmlFor="name" md={2} className="text-primary">Name</Label>
                                         <Col md={10}>
                                             <Control.text model=".name" id="name" name="name"
                                             placeholder="Name"
@@ -54,7 +54,7 @@ class Contact extends Component {
                                         </Col>
                                     </Row>
                                     <Row className="form-group">
-                                        <Label htmlFor="phoneNum" md={2}>Phone</Label>
+                                        <Label htmlFor="phoneNum" md={2} className="text-primary">Phone</Label>
                                         <Col md={10}>
                                             <Control.text model=".phoneNum" id="phoneNum" name="phoneNum"
                                             placeholder="( Optional )"
@@ -64,7 +64,7 @@ class Contact extends Component {
                                         </Col>
                                     </Row>
                                     <Row className="form-group">
-                                        <Label htmlFor="email" md={2}>Email</Label>
+                                        <Label htmlFor="email" md={2} className="text-primary">Email</Label>
                                         <Col md={10}>
                                             <Control.text model=".email" id="email" name="email"
                                             placeholder="Email"
@@ -82,7 +82,7 @@ class Contact extends Component {
                                                     name="agree"
                                                     className="form-check-input"
                                                     /> {' '}
-                                                    <strong>May I contact you?</strong>
+                                                    <strong className="text-primary">May I contact you?</strong>
                                                 </Label>
                                             </div>
                                         </Col>
@@ -95,10 +95,10 @@ class Contact extends Component {
                                         </Col>
                                     </Row>
                                     <Row className="form-group">
-                                        <Label htmlFor="message" md={2}>Message</Label>
+                                        <Label htmlFor="message" md={2} className="text-primary">Message</Label>
                                         <Col md={10}>
                                             <Control.textarea model=".message" id="message" name="message"
-                                            rows="12"
+                                            rows="6"
                                             className="form-control" 
                                             />
                                         </Col>
