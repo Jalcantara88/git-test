@@ -33,28 +33,30 @@ class Menu extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="mx-auto">
                                 
-                                <NavItem>
+                                <NavItem className="align-self-center">
                                     <Link className="nav-link" to="about">
                                         About
                                     </Link>
                                 </NavItem>
-                                <NavItem>
+                                <NavItem className="align-self-center">
                                     <Link className="nav-link" to="skills">
                                         Skills
                                     </Link>
                                 </NavItem>
-                                <NavItem>
-                                    <img src="" />
+                                <NavItem className="align-self-center">
+                                    <img className="menuLogo" src="/assets/dhLogo.svg" />
                                 </NavItem>
-                                <NavItem>
+                                <NavItem className="align-self-center">
                                     <Link className="nav-link" to="folio">
                                         Folio
                                     </Link>
                                 </NavItem>
-                                
+                                <NavItem className="align-self-center">
                                     <Link className="nav-link" to="contact">
                                         Contact
                                     </Link>
+                                </NavItem>
+                                    
                                 
                             </Nav>
 

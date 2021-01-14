@@ -5,6 +5,7 @@ import Profile from './profileComponent';
 import Contact from './contactComponent';
 import Footer from './footerComponent';
 import Skills from './skillsComponent';
+import Portfolio from './portfolioComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -29,6 +30,7 @@ class Main extends Component {
                     video={this.props.skills.filter(skill => skill.type === "video")}
                     threedee={this.props.skills.filter(skill => skill.type === "threedee")}
                 />
+                <Portfolio projects={this.props.projects}/>
                 <Contact />
                 <Footer />
             </React.Fragment>
