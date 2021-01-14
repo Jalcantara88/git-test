@@ -1,5 +1,5 @@
-import { PROJECTS } from '../shared/projects';
-import { SKILLS } from '../shared/skills';
+
+
 import { SOCIAL} from '../shared/social';
 
 export const initialState = {
