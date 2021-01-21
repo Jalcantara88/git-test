@@ -1,4 +1,5 @@
 import React, { Component, Profiler } from 'react';
+import ProjectInfo from './renderProjectComponent';
 import SocialBar from './socialBarComponent';
 import Menu from './menuComponent';
 import Profile from './profileComponent';
@@ -18,7 +19,17 @@ const mapStateToProps = state => {
 };
 
 class Main extends Component {
+    
+
     render() {
+        const ProjectWithId = ({match}) => {
+            console.log(this.props);
+            return(
+                
+                <ProjectInfo project={this.props.projects.filter(project => project.id === +match.params.id)[0]} />
+            );
+        };
+
         return(
             <React.Fragment>
                 <SocialBar socialLinks={this.props.socialLinks}/>
@@ -30,6 +41,10 @@ class Main extends Component {
                     video={this.props.skills.filter(skill => skill.type === "video")}
                     threedee={this.props.skills.filter(skill => skill.type === "threedee")}
                 />
+                
+                
+                
+                    
                 <Portfolio projects={this.props.projects}/>
                 <Contact />
                 <Footer />

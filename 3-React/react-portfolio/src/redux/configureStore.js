@@ -8,7 +8,7 @@ export const ConfigureStore = () => {
         combineReducers({
             projects: Projects,
             skills: Skills,
-            social: Social
+            socialLinks: Social
         })
     );
 

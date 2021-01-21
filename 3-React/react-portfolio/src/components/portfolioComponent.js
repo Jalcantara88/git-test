@@ -18,6 +18,16 @@ function RenderPortfolioItem({item}) {
 };
 
 function Portfolio(props) {
+    props.state = {
+        toggleSelected: null
+    }
+
+    handleSelect = (item) => {
+        this.setState({selectedItem: item})
+    }
+
+    {this.state.selectedItem && <RenderPortfolioItem item={this.state.selectedItem} />}
+
     console.log(props.project);
     const portfolio = props.projects.map(project => {
         return(
@@ -28,7 +38,7 @@ function Portfolio(props) {
     });
 
     return (
-        <div className="container-fuid bg-warning py-5">
+        <div className="container-fuid bg-warning py-3">
             <div className="row">
                 <div className="col-12">
                     <h2 className="text-center text-muted">PORTFOLIO</h2>

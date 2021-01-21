@@ -23,12 +23,9 @@ class Menu extends Component {
 
     render() {
         return(
-            <React.Fragment>
-                <Navbar dark className="bg-dark" sticky="top" expand="md">
-                    <div className="container">
-                        <NavbarBrand className="" href="#pageStart">
-                            <img src="" alt="" />
-                        </NavbarBrand>
+            <div>
+                <Navbar dark color="dark" sticky="top" expand="md">
+                    
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="mx-auto">
@@ -62,10 +59,9 @@ class Menu extends Component {
 
                         </Collapse>
                         
-                    </div>
+                    
                 </Navbar>
-
-            </React.Fragment>
+                </div>
         )
     }
 
