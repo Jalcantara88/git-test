@@ -3,18 +3,21 @@ import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } 
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderDirectoryItem({campsite}) {
     return(
-        <Card>
-            <Link to={`/directory/${campsite.id}`}>
-            <CardImg width="100%" src={baseUrl + campsite.image} alt={campsite.name} />
-            <CardImgOverlay>
-                <CardTitle>{campsite.name}</CardTitle>
-                
-            </CardImgOverlay>    
-            </Link>          
-        </Card>
+        <Fade in>
+            <Card>
+                <Link to={`/directory/${campsite.id}`}>
+                <CardImg width="100%" src={baseUrl + campsite.image} alt={campsite.name} />
+                <CardImgOverlay>
+                    <CardTitle>{campsite.name}</CardTitle>
+                    
+                </CardImgOverlay>    
+                </Link>          
+            </Card>
+        </Fade>
     )
 }
 
@@ -22,10 +25,15 @@ function RenderDirectoryItem({campsite}) {
 function Directory(props) {
     
         const directory = props.campsites.campsites.map(campsite => {
+
             return (
-                <div key={campsite.id} className="col-md-5 m-1">
-                    <RenderDirectoryItem campsite={campsite}/>
-                </div>
+                
+                        <div key={campsite.id} className="col-md-5 m-1">
+                                
+                                    <RenderDirectoryItem campsite={campsite}/>
+                                
+                        </div>
+                
             );
         });
         
@@ -66,7 +74,9 @@ function Directory(props) {
                     </div>
                 </div>
                 <div className="row">
-                    {directory}
+                    
+                        {directory}
+                    
                 </div>
                 
             </div>

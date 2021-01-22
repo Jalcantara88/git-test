@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -118,22 +119,25 @@ function RenderComments({comments, postComment, campsiteId}) {
             return(
                 <div className="col-md-5 m-1">
                     <h4>Comments</h4>
-                    {comments.map(
-                        comments => {
-                            return(
-                                <div key={comments.id} className="col-md m-3">
-                                    
-                                        <div>
-                                            {comments.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}
+                    <Stagger in>
+                        {comments.map(
+                            comments => {
+                                return(
+                                    <Fade in key={comments.id}>
+                                        <div className="col-md m-3">
+                                            
+                                                <div>
+                                                    {comments.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}
+                                                </div>
+                                                <strong>
+                                                    {comments.text}
+                                                </strong>
                                         </div>
-                                        <strong>
-                                            {comments.text}
-                                        </strong>
-                                    
-                                </div>
-                            );
-                        }
-                    )}
+                                    </Fade>
+                                );
+                            }
+                        )}
+                    </Stagger>
                     <CommentForm campsiteId={campsiteId} postComment={postComment} />
 
 
@@ -146,13 +150,19 @@ function RenderComments({comments, postComment, campsiteId}) {
 function RenderCampsite({campsite}) {
     return (
         <div className="col-md-5 m-1">
-            <Card>
-                <CardImg top src={baseUrl + campsite.image} alt={campsite.name}/>
-                <CardBody>
-                    <CardTitle>{campsite.name}</CardTitle>
-                    <CardText>{campsite.description}</CardText>
-                </CardBody>
-            </Card>
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                <Card>
+                    <CardImg top src={baseUrl + campsite.image} alt={campsite.name}/>
+                    <CardBody>
+                        <CardTitle>{campsite.name}</CardTitle>
+                        <CardText>{campsite.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
         </div>
     );
 }
