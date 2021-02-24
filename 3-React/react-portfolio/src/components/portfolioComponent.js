@@ -8,9 +8,7 @@ function RenderPortfolioItem({item}) {
             <Card>
                 
                 <CardImg src={item.thumb} alt={item.name} />
-                    <CardImgOverlay>
-                        <CardTitle>{item.name}</CardTitle>
-                    </CardImgOverlay>
+                    
                 
             </Card>
     );
@@ -24,7 +22,7 @@ return(
     
         <Card>
             
-                <CardImg height='300px' width='800px' src={project.thumb} alt={project.name} />
+                <CardImg height='300px' width='800px' src={project.preview} alt={project.name} />
                 <CardImgOverlay>
                     <CardTitle>{project.name}</CardTitle>
                 </CardImgOverlay>
