@@ -1,34 +1,30 @@
-import React, { Component, Profiler } from 'react';
-import ProjectInfo from './renderProjectComponent';
+import React, { Component } from 'react';
 import SocialBar from './socialBarComponent';
 import Menu from './menuComponent';
 import Profile from './profileComponent';
 import Contact from './contactComponent';
 import Footer from './footerComponent';
 import Skills from './skillsComponent';
+
 import Portfolio from './portfolioComponent';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
         projects: state.projects,
         socialLinks: state.socialLinks,
-        skills: state.skills
+        skills: state.skills,
+        selectedProject: state.projects[0]
     };
 };
 
 class Main extends Component {
     
+    
 
     render() {
-        const ProjectWithId = ({match}) => {
-            console.log(this.props);
-            return(
-                
-                <ProjectInfo project={this.props.projects.filter(project => project.id === +match.params.id)[0]} />
-            );
-        };
+        
 
         return(
             <React.Fragment>
@@ -45,7 +41,10 @@ class Main extends Component {
                 
                 
                     
-                <Portfolio projects={this.props.projects}/>
+                <Portfolio 
+                    projects={this.props.projects}
+                    selectedProject={this.props.selectedProject}
+                    />
                 <Contact />
                 <Footer />
             </React.Fragment>

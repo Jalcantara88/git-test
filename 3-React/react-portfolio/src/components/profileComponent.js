@@ -5,7 +5,7 @@ const Profile = (props) => {
   return (
     <React.Fragment>
       <Jumbotron fluid className="bg-danger my-0 text-white pb-2 pt-4" id="about">
-        <img className="profilePic" src="/assets/profilePic.png" />
+        <img className="profilePic" alt="something" src="/assets/profilePic.png" />
         <h1 className="display-3">Julio Alcantara</h1>
         <p className="lead">LVL 32 ARTIST/CODER</p>
         <hr className="my-2 bg-white" />

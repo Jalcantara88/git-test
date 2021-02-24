@@ -1,38 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { PROJECTS } from '../shared/projects';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
-import { Link } from 'react-router-dom';
 
 function RenderPortfolioItem({item}) {
+        
     return(
-        <React.Fragment>
             <Card>
-                <Link to={`/portfolio/${item.id}`}>
-                    <CardImg width="100%" src={item.thumb} alt={item.name} />
+                
+                <CardImg src={item.thumb} alt={item.name} />
                     <CardImgOverlay>
                         <CardTitle>{item.name}</CardTitle>
                     </CardImgOverlay>
-                </Link>
+                
             </Card>
-        </React.Fragment>
     );
+
 };
 
-function Portfolio(props) {
-    props.state = {
-        toggleSelected: null
+
+function RenderSelectedProject ({project}) {
+console.log(project)
+return(
+    
+        <Card>
+            
+                <CardImg height='300px' width='800px' src={project.thumb} alt={project.name} />
+                <CardImgOverlay>
+                    <CardTitle>{project.name}</CardTitle>
+                </CardImgOverlay>
+            
+        </Card>
+    
+);
+};
+
+
+class Portfolio extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: PROJECTS,
+            selectedProject: PROJECTS[0]
+        }
     }
+    
+    
 
-    handleSelect = (item) => {
-        this.setState({selectedItem: item})
-    }
 
-    {this.state.selectedItem && <RenderPortfolioItem item={this.state.selectedItem} />}
-
-    console.log(props.project);
-    const portfolio = props.projects.map(project => {
+    
+    render(){
+    const portfolio = this.state.projects.map(project => {
         return(
-            <div key={project.id} className="col-4">
-                <RenderPortfolioItem item={project} />
+            <div key={project.id} className="col-3 mx-0" onClick={() => this.setState({selectedProject: project})}>
+                <RenderPortfolioItem  item={project}/>
             </div>
         );
     });
@@ -46,6 +66,11 @@ function Portfolio(props) {
                 
             </div>
             <div className="row">
+                <div className="col-12">
+                    <RenderSelectedProject project={this.state.selectedProject}/>
+                </div>
+            </div>
+            <div className="row">
                 <div className="col-11 col-lg-8 mx-auto">
                     <div className="row">
                         {portfolio}
@@ -56,6 +81,7 @@ function Portfolio(props) {
             </div>
         </div>
     );
+    }
 };
 
 export default Portfolio;

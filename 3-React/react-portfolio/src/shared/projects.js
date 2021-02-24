@@ -78,15 +78,5 @@ export const PROJECTS = [
         skills: "Bootstrap, HTML, CSS",
         description: "this was made for yada yada",
         link: "url"
-    },
-    {
-        id: 8,
-        name: "Project 9",
-        preview: "/assets/portfolio/previews/preview9.png",
-        thumb: "/assets/portfolio/thumbs/thumb9.png",
-        full: "/assets/portfolio/fulls/full1.png",
-        skills: "Bootstrap, HTML, CSS",
-        description: "this was made for yada yada",
-        link: "url"
     }
 ];

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Jumbotron } from 'reactstrap';
 
 function RenderSocialLinks({socialLink}) {
@@ -6,7 +6,7 @@ function RenderSocialLinks({socialLink}) {
         <React.Fragment>
             <div className="col">
                 <a href={socialLink.url}>
-                    <img className="img-fluid" src={socialLink.image}/>
+                    <img className="img-fluid" alt="something" src={socialLink.image}/>
                 </a>
             </div>         
         </React.Fragment>

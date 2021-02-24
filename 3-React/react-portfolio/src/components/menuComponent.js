@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link, animateScroll as scroll } from "react-scroll";
-import { Nav, NavbarToggler, Collapse, NavItem, Navbar, NavbarBrand } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { Link } from "react-scroll";
+import { Nav, NavbarToggler, Collapse, NavItem, Navbar } from 'reactstrap';
 
 
 
@@ -41,7 +40,7 @@ class Menu extends Component {
                                     </Link>
                                 </NavItem>
                                 <NavItem className="align-self-center">
-                                    <img className="menuLogo" src="/assets/dhLogo.svg" />
+                                    <img className="menuLogo" alt="logo" src="/assets/dhLogo.svg" />
                                 </NavItem>
                                 <NavItem className="align-self-center">
                                     <Link className="nav-link" to="folio">
