@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Label, Col, Row } from 'reactstrap';
 import { Control, LocalForm } from 'react-redux-form';
+import * as emailjs from 'emailjs-com';
 
 class Contact extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Contact extends Component {
         this.state = {
             name: '',
             phoneNum: '',
+            email: '',
             agree: false,
             contactType: 'By Phone',
             message: '',
@@ -20,14 +22,67 @@ class Contact extends Component {
             }
         };
 
-        
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.resetForm = this.resetForm.bind(this);
+    }
+
+    resetForm() {
+        this.setState({
+            name: '',
+            phoneNum: '',
+            email: '',
+            agree: false,
+            contactType: 'By Phone',
+            message: '',
+            touched: {
+                firstName: false,
+                lastName: false,
+                phoneNum: false,
+                email: false
+            }
+        })
+    }
+
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
     handleSubmit(values) {
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
-    
+        
+        const templateParams = {
+            from_name: values.name,
+            from_email: values.email,
+            to_name: 'Dead Head Studio',
+            subject: '',
+            message: "<div>" +
+                values.message +
+                "<br/>" +
+                values.phoneNum +
+                "<br />" +
+                values.agree +
+                "<br />" +
+                values.contactType +
+            "</div>"
+        }
+
+        emailjs.send(
+            'service_0hrz00p',
+            'template_4ahyxbq',
+            templateParams,
+            'user_JAROk9lQAEPEq9MKXKS8y'
+        )
+
+    }
+
+    sendFeedback (templateId, variables) {
+        window.emailjs.send(
+            'gmail', templateId,
+            variables
+        ).then(res => {
+            console.log('Email successfully sent!')
+        })
+        .catch(err => console.log("something went wrong, try again:", err))
     }
     
     render() {

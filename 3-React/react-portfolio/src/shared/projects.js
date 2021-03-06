@@ -28,7 +28,7 @@ export const PROJECTS = [
             },
 
         ],
-        description: "this was made for yada yada",
+        description: "Site for a Lash Retail store",
         link: "url"
     },
     {
@@ -104,7 +104,33 @@ export const PROJECTS = [
         preview: "/assets/portfolio/previews/preview4.png",
         thumb: "/assets/portfolio/thumbs/thumb4.png",
         full: "/assets/portfolio/fulls/full1.png",
-        skills: "Bootstrap, HTML, CSS",
+        skills: [
+            {
+                id: 0,
+                name: 'HTML'
+            },
+            
+            {
+                id: 2,
+                name: 'BOOTSTRAP'
+            },
+            {
+                id: 3,
+                name: 'JAVASCRIPT'
+            },
+            {
+                id: 4,
+                name: 'CSS'
+            },
+            {
+                id: 5,
+                name: 'PHOTSHOP'
+            },
+            {
+                id: 6,
+                name: 'ILLUSTRATOR'
+            }
+        ],
         description: "this was made for yada yada",
         link: "url"
     },
@@ -114,7 +140,33 @@ export const PROJECTS = [
         preview: "/assets/portfolio/previews/preview5.png",
         thumb: "/assets/portfolio/thumbs/thumb5.png",
         full: "/assets/portfolio/fulls/full1.png",
-        skills: "Bootstrap, HTML, CSS",
+        skills: [
+            {
+                id: 0,
+                name: 'HTML'
+            },
+            
+            {
+                id: 2,
+                name: 'BOOTSTRAP'
+            },
+            {
+                id: 3,
+                name: 'JAVASCRIPT'
+            },
+            {
+                id: 4,
+                name: 'CSS'
+            },
+            {
+                id: 5,
+                name: 'PHOTSHOP'
+            },
+            {
+                id: 6,
+                name: 'ILLUSTRATOR'
+            }
+        ],
         description: "this was made for yada yada",
         link: "url"
     },
@@ -151,9 +203,35 @@ export const PROJECTS = [
         preview: "/assets/portfolio/previews/preview7.png",
         thumb: "/assets/portfolio/thumbs/thumb7.png",
         full: "/assets/portfolio/fulls/full1.png",
-        skills: "Bootstrap, HTML, CSS",
+        skills: [
+            {
+                id: 0,
+                name: 'HTML'
+            },
+            
+            {
+                id: 2,
+                name: 'BOOTSTRAP'
+            },
+            {
+                id: 3,
+                name: 'JAVASCRIPT'
+            },
+            {
+                id: 4,
+                name: 'CSS'
+            },
+            {
+                id: 5,
+                name: 'PHOTSHOP'
+            },
+            {
+                id: 6,
+                name: 'ILLUSTRATOR'
+            }
+        ],
         description: "Branding for a YouTube Channel about Video Game Developing and Playing Indie Games",
-        link: "http://www.supergamebros.com"
+        link: "http://www.supergamebros.com" 
     },
     {
         id: 7,
