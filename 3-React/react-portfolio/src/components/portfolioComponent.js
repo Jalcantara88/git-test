@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PROJECTS } from '../shared/projects';
-import { Card, CardImg, CardImgOverlay, CardSubtitle, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardSubtitle, CardTitle, Button } from 'reactstrap';
 
 function RenderPortfolioItem({item}) {
         
@@ -60,7 +60,7 @@ return(
                         
                     </div>
                 </CardSubtitle>
-            
+            <Button>Go To Project</Button>
         </Card>
         </React.Fragment>
 );

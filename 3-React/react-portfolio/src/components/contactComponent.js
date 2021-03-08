@@ -1,47 +1,28 @@
 import React, { Component } from 'react';
-import { Button, Label, Col, Row } from 'reactstrap';
-import { Control, LocalForm } from 'react-redux-form';
+import { Button, Label, Col, Row, Alert } from 'reactstrap';
+import { Control, LocalForm, Errors, actions } from 'react-redux-form';
+
 import * as emailjs from 'emailjs-com';
+
+const required = val => val && val.length;
+const maxLength = len => val => !val || (val.length <= len);
+const minLength = len => val => val && (val.length >= len);
+//const isNumber = val => !isNaN(+val);
+const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 class Contact extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            name: '',
-            phoneNum: '',
-            email: '',
-            agree: false,
-            contactType: 'By Phone',
-            message: '',
-            touched: {
-                firstName: false,
-                lastName: false,
-                phoneNum: false,
-                email: false
-            }
-        };
-
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.resetForm = this.resetForm.bind(this);
     }
 
     resetForm() {
-        this.setState({
-            name: '',
-            phoneNum: '',
-            email: '',
-            agree: false,
-            contactType: 'By Phone',
-            message: '',
-            touched: {
-                firstName: false,
-                lastName: false,
-                phoneNum: false,
-                email: false
-            }
-        })
+        
+            document.getElementById('name').value='';
+            document.getElementById('email').value='';
+            document.getElementById('message').value='';
     }
 
     handleChange(event) {
@@ -54,36 +35,22 @@ class Contact extends Component {
             from_name: values.name,
             from_email: values.email,
             to_name: 'Dead Head Studio',
-            subject: '',
-            message: "<div>" +
-                values.message +
-                "<br/>" +
-                values.phoneNum +
-                "<br />" +
-                values.agree +
-                "<br />" +
-                values.contactType +
-            "</div>"
-        }
+            subject: values.name,
+            message: values.message
+        };
 
         emailjs.send(
             'service_0hrz00p',
             'template_4ahyxbq',
             templateParams,
             'user_JAROk9lQAEPEq9MKXKS8y'
-        )
+        );
 
+        alert("thank you");
+        this.formDispatch(actions.reset('contactForm')); // or whatever model you gave to <LocalForm>
     }
 
-    sendFeedback (templateId, variables) {
-        window.emailjs.send(
-            'gmail', templateId,
-            variables
-        ).then(res => {
-            console.log('Email successfully sent!')
-        })
-        .catch(err => console.log("something went wrong, try again:", err))
-    }
+    
     
     render() {
         return (
@@ -97,58 +64,65 @@ class Contact extends Component {
                             </div>
 
                             <div className="col-10 mx-auto">
-                                <LocalForm onSubmit={values => this.handleSubmit(values)}>
+                                <LocalForm 
+                                    model='contactForm'
+                                    getDispatch={(dispatch) => this.formDispatch = dispatch}
+                                    onSubmit={values => 
+                                    this.handleSubmit(values)
+                                    
+                                    }
+                                    >
                                     <Row className="form-group">
                                         <Label htmlFor="name" md={2} className="text-primary">Name</Label>
                                         <Col md={10}>
                                             <Control.text model=".name" id="name" name="name"
+                                            
                                             placeholder="Name"
                                             className="form-control" 
+                                            validators={{
+                                                required,
+                                                minLength: minLength(2),
+                                                maxLength: maxLength(15)
+                                            }}
                                             />
-                                        
+                                            <Errors
+                                                className="text-danger"
+                                                model=".name"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required',
+                                                    minLength: 'Must be at least 2 characters',
+                                                    maxLength: 'Must be 15 characters or less'
+                                                }}
+                                            />
                                         </Col>
                                     </Row>
-                                    <Row className="form-group">
-                                        <Label htmlFor="phoneNum" md={2} className="text-primary">Phone</Label>
-                                        <Col md={10}>
-                                            <Control.text model=".phoneNum" id="phoneNum" name="phoneNum"
-                                            placeholder="( Optional )"
-                                            className="form-control"
-                                            />
-                                        
-                                        </Col>
-                                    </Row>
+                                    
                                     <Row className="form-group">
                                         <Label htmlFor="email" md={2} className="text-primary">Email</Label>
                                         <Col md={10}>
                                             <Control.text model=".email" id="email" name="email"
                                             placeholder="Email"
                                             className="form-control"
+                                            validators={{
+                                                required,
+                                                validEmail
+                                            }}
                                             />
+                                            <Errors
+                                                className="text-danger"
+                                                model=".email"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required',
+                                                    validEmail: 'Invalid email address'
+                                                }}
+                                            />
+                                        </Col>
+                                    </Row>
                                     
-                                        </Col>
-                                    </Row>
-                                    <Row className="form-group">
-                                        <Col md={{size: 4, offset: 2}}>
-                                            <div className="form-check">
-                                                <Label check>
-                                                    <Control.checkbox
-                                                    model=".agree"
-                                                    name="agree"
-                                                    className="form-check-input"
-                                                    /> {' '}
-                                                    <strong className="text-primary">May I contact you?</strong>
-                                                </Label>
-                                            </div>
-                                        </Col>
-                                        <Col md={4}>
-                                            <Control.select name="contactType" model=".contactType"
-                                            className="form-control">
-                                            <option>By Phone</option>
-                                            <option>By Email</option>
-                                            </Control.select>
-                                        </Col>
-                                    </Row>
                                     <Row className="form-group">
                                         <Label htmlFor="message" md={2} className="text-primary">Message</Label>
                                         <Col md={10}>
@@ -160,7 +134,7 @@ class Contact extends Component {
                                     </Row>
                                     <Row className="form-group">
                                         <Col md={{size: 10, offset: 2}}>
-                                            <Button type="submit" color="primary">
+                                            <Button onClick={this.resetForm()} type="submit" color="primary">
                                                 Send Feedback
                                             </Button>
                                         </Col>
